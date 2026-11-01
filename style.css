@@ -2,3 +2,22 @@
 @media(max-width:1050px){.main{padding:0 24px}.feature-grid{grid-template-columns:repeat(2,1fr)}.editor-layout{grid-template-columns:minmax(0,1fr) 210px}.hero{padding:35px}.effect-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.sidebar{position:fixed;z-index:30;left:-260px;top:0;bottom:0;transition:.25s;box-shadow:var(--shadow)}.sidebar.open{left:0}.main{padding:0 15px}.topbar{height:62px}.mobile-menu{display:block}.privacy{display:none}.view{padding-top:25px}.hero{grid-template-columns:1fr;padding:28px 23px;min-height:0}.hero-art{height:190px}.hero h1{font-size:40px}.section-head{align-items:start;gap:10px;flex-direction:column}.feature-grid,.stats-grid{grid-template-columns:1fr 1fr}.feature-card{min-height:190px;padding:16px}.page-heading{align-items:flex-start;gap:14px;flex-direction:column}.page-heading h1{font-size:33px}.editor-layout{grid-template-columns:1fr}.editor-side{display:grid;grid-template-columns:1fr 1fr}.side-note{grid-column:1/-1}.compare-grid{gap:6px}.image-stage{height:220px}.compare-panel{padding:9px}.preview-label{font-size:8px}.slider-grid{gap:15px}.utility-layout,.media-layout{grid-template-columns:1fr}.export-row{grid-template-columns:1fr 1fr}.export-row label:last-child{grid-column:1/-1}.resize-inline>*{flex:1}.resize-inline .primary-btn{flex-basis:100%}.top-actions{gap:8px}footer{gap:10px;flex-direction:column}.media-input-row{flex-direction:column}}@media(max-width:430px){.feature-grid,.stats-grid{grid-template-columns:1fr 1fr}.feature-card{min-height:205px}.editor-side{grid-template-columns:1fr}.side-note{grid-column:auto}.slider-grid{grid-template-columns:1fr}.effect-grid{grid-template-columns:repeat(3,1fr)}.action-grid{grid-template-columns:repeat(2,1fr)}.export-row{grid-template-columns:1fr}.export-row label:last-child{grid-column:auto}.compare-foot{font-size:8px}.tool-chip{padding:11px 10px;font-size:10px}}
 
 .crop-inline{margin-top:20px;padding-top:17px;border-top:1px solid var(--line)}.crop-title{font-size:11px;font-weight:700;margin-bottom:10px}.crop-title small{font-size:9px;font-weight:400;color:var(--muted);margin-left:7px}.crop-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end}.crop-fields label{display:flex;flex-direction:column;gap:6px;font-size:9px;color:var(--muted)}.crop-fields input{min-width:0;width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:7px;padding:9px}.crop-fields button{font-size:9px;padding:10px 8px}@media(max-width:760px){.crop-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* UX + performance feedback improvements */
+.tool-guide{margin:12px 0 16px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--muted);font-size:10px;line-height:1.65}
+.tool-guide summary{cursor:pointer;color:var(--accent2);font-weight:700;list-style:none}
+.tool-guide summary::-webkit-details-marker{display:none}
+.tool-guide summary:after{content:'＋';float:right;color:var(--muted)}
+.tool-guide[open] summary:after{content:'−'}
+.tool-guide p{margin:9px 0 0}.tool-guide b{color:var(--text)}
+.utility-card .tool-guide{margin:10px 0 14px}
+.tool-message.is-error{color:var(--danger)}.tool-message.is-success{color:var(--good)}
+button:disabled{opacity:.55;cursor:wait}.is-busy{position:relative;filter:saturate(.8)}
+.qr-download{display:inline-flex;margin:10px 0 0;padding:9px 13px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-size:10px;font-weight:700}
+.color-preview{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:#6d5dfc;box-shadow:inset 0 0 0 3px #ffffff22}
+.media-frame-wrap{position:relative;width:100%;aspect-ratio:16/9;margin-top:14px;overflow:hidden;border-radius:10px;background:#05070c}
+.media-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.image-stage canvas{image-rendering:auto;will-change:contents}
+button, .feature-card, .utility-card{transition:transform .16s ease,border-color .16s ease,background-color .16s ease}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
