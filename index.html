@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d18">
+<title>Senn Tools | Creative Utility Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="Senn Tools home"><span class="brand-mark">S</span><span><b>SENN</b><small>TOOLS / FINAL</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" data-view="dashboard"><span>⌂</span> Overview</button>
+    <button class="nav-item" data-view="editor"><span>◈</span> Image Studio <i>NEW</i></button>
+    <button class="nav-item" data-view="converter"><span>⇄</span> Converter</button>
+    <button class="nav-item" data-view="utilities"><span>▦</span> Utilities</button>
+    <button class="nav-item" data-view="media"><span>↗</span> Media Links</button>
+    <div class="side-label">QUICK TOOLS</div>
+    <button class="nav-item" data-view="editor" data-tool="compress"><span>▧</span> Image Compressor</button>
+    <button class="nav-item" data-view="editor" data-tool="resize"><span>↔</span> Image Resizer</button>
+    <button class="nav-item" data-view="converter" data-tool="format"><span>◉</span> Format Converter</button>
+    <div class="sidebar-bottom"><div class="status-dot"></div><span>Local processing active</span><small>v2.0.0</small></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="crumb">Senn Tools <span>/</span> <b id="crumbCurrent">Overview</b></div>
+      <div class="top-actions"><span class="privacy"><span class="status-dot"></span> Files stay on your device</span><button class="icon-btn" id="themeBtn" title="Toggle theme">☼</button></div>
+    </header>
+
+    <section class="view active" id="view-dashboard">
+      <div class="hero">
+        <div><div class="eyebrow">YOUR CREATIVE WORKSPACE</div><h1>Make it work.<br><em>Make it better.</em></h1><p>A practical toolkit for images, files, and everyday digital tasks. No decorative buttons pretending to be features.</p><div class="hero-actions"><button class="primary-btn" data-go="editor">Open Image Studio <span>↗</span></button><button class="ghost-btn" data-go="converter">Explore tools</button></div></div>
+        <div class="hero-art"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-card"><div class="mini-top"><span>LIVE WORKSPACE</span><span class="live-pill">● READY</span></div><div class="hero-symbol">S<span>✳</span></div><div class="hero-card-foot"><b>Creative tools</b><small>One workspace. Real output.</small></div></div></div>
+      </div>
+      <div class="section-head"><div><div class="eyebrow">START HERE</div><h2>Choose your workflow</h2></div><span class="muted">Everything important, one click away.</span></div>
+      <div class="feature-grid">
+        <article class="feature-card feature-main" data-go="editor"><div class="feature-icon">◈</div><span class="tag">MOST USED</span><h3>Image Studio</h3><p>Edit photos with live before-and-after preview. Every adjustment is rendered immediately.</p><b>Open editor <span>↗</span></b></article>
+        <article class="feature-card" data-go="converter"><div class="feature-icon">⇄</div><h3>File Converter</h3><p>Convert images between PNG, JPEG, and WebP.</p><b>Convert files <span>↗</span></b></article>
+        <article class="feature-card" data-go="utilities"><div class="feature-icon">▦</div><h3>Daily Utilities</h3><p>QR generator, text tools, color picker, and unit conversion.</p><b>Explore utilities <span>↗</span></b></article>
+        <article class="feature-card" data-go="media"><div class="feature-icon">↗</div><h3>Media Links</h3><p>Organize and preview TikTok or YouTube links, then continue through official platform options.</p><b>Open media links <span>↗</span></b></article>
+      </div>
+      <div class="section-head compact"><div><div class="eyebrow">BUILT TO BE USEFUL</div><h2>What actually works</h2></div></div>
+      <div class="stats-grid"><div class="stat"><strong>LIVE</strong><span>Image adjustments</span></div><div class="stat"><strong>LOCAL</strong><span>Image processing</span></div><div class="stat"><strong>3</strong><span>Image export formats</span></div><div class="stat"><strong>0</strong><span>Fake AI claims</span></div></div>
+    </section>
+
+    <section class="view" id="view-editor">
+      <div class="page-heading"><div><div class="eyebrow">IMAGE WORKSPACE</div><h1>Image Studio</h1><p>Drop a photo, adjust it, and compare the actual result in real time.</p></div><div class="heading-actions"><button class="ghost-btn" id="resetEdits">Reset edits</button><button class="primary-btn" id="downloadEdited" disabled>Export image ↓</button></div></div>
+      <div class="editor-layout">
+        <div class="editor-main">
+          <div class="upload-panel" id="dropZone"><input type="file" id="imageInput" accept="image/*" hidden><div class="upload-inner"><div class="upload-icon">↑</div><h3>Drop your image here</h3><p>or <button class="text-btn" id="browseImage">browse files</button> from your device</p><small>PNG, JPG, WEBP · processed locally</small></div></div>
+          <div class="compare-panel hidden" id="comparePanel">
+            <div class="compare-head"><div><b>Live comparison</b><small>Original and edited output</small></div><span class="live-pill">● LIVE PREVIEW</span></div>
+            <div class="compare-grid">
+              <div class="preview-card"><div class="preview-label"><span>BEFORE</span><span id="beforeDimensions">Original</span></div><div class="image-stage checker"><img id="beforeImage" alt="Original image"></div></div>
+              <div class="preview-card"><div class="preview-label"><span>AFTER</span><span id="afterDimensions">Edited</span></div><div class="image-stage checker"><canvas id="afterCanvas"></canvas></div></div>
+            </div>
+            <div class="compare-foot"><span id="previewStatus">Changes update automatically</span><span id="fileInfo"></span></div>
+          </div>
+          <div class="tool-strip">
+            <button class="tool-chip active" data-panel="adjust">☷ Adjust</button><button class="tool-chip" data-panel="transform">⌗ Transform</button><button class="tool-chip" data-panel="effects">✧ Effects</button><button class="tool-chip" data-panel="export">⇩ Export</button>
+          </div>
+          <div class="control-panel" id="panel-adjust">
+            <div class="control-title"><div><h3>Basic adjustments</h3><p>Move a slider. The preview updates immediately.</p></div><button class="mini-reset" data-reset="adjust">Reset</button></div>
+            <div class="slider-grid">
+              <label class="slider-control"><span>Brightness <output id="brightnessVal">100%</output></span><input data-filter="brightness" type="range" min="0" max="200" value="100"></label>
+              <label class="slider-control"><span>Contrast <output id="contrastVal">100%</output></span><input data-filter="contrast" type="range" min="0" max="200" value="100"></label>
+              <label class="slider-control"><span>Saturation <output id="saturateVal">100%</output></span><input data-filter="saturate" type="range" min="0" max="200" value="100"></label>
+              <label class="slider-control"><span>Exposure <output id="exposureVal">0</output></span><input data-filter="exposure" type="range" min="-100" max="100" value="0"></label>
+              <label class="slider-control"><span>Temperature <output id="temperatureVal">0</output></span><input data-filter="temperature" type="range" min="-100" max="100" value="0"></label>
+              <label class="slider-control"><span>Tint <output id="tintVal">0</output></span><input data-filter="tint" type="range" min="-100" max="100" value="0"></label>
+              <label class="slider-control"><span>Sharpness <output id="sharpnessVal">0</output></span><input data-filter="sharpness" type="range" min="0" max="5" step=".1" value="0"></label>
+              <label class="slider-control"><span>Blur <output id="blurVal">0px</output></span><input data-filter="blur" type="range" min="0" max="8" step=".2" value="0"></label>
+            </div>
+          </div>
+          <div class="control-panel hidden" id="panel-transform">
+            <div class="control-title"><div><h3>Transform image</h3><p>Rotate and flip the image before exporting.</p></div></div>
+            <div class="action-grid"><button class="action-tile" id="rotateLeft">↶<b>Rotate left</b></button><button class="action-tile" id="rotateRight">↷<b>Rotate right</b></button><button class="action-tile" id="flipHorizontal">⇋<b>Flip horizontal</b></button><button class="action-tile" id="flipVertical">⇵<b>Flip vertical</b></button></div>
+            <div class="resize-inline"><label>Width (px)<input id="resizeWidth" type="number" min="1" max="12000" placeholder="Original"></label><label>Height (px)<input id="resizeHeight" type="number" min="1" max="12000" placeholder="Original"></label><label class="checkline"><input type="checkbox" id="keepRatio" checked> Keep aspect ratio</label><button class="primary-btn" id="applyResize">Apply resize</button></div>
+            <div class="crop-inline"><div class="crop-title">Crop area <small>Set the source image rectangle in pixels</small></div><div class="crop-fields"><label>X<input id="cropX" type="number" min="0" value="0"></label><label>Y<input id="cropY" type="number" min="0" value="0"></label><label>Width<input id="cropW" type="number" min="1" value="1"></label><label>Height<input id="cropH" type="number" min="1" value="1"></label><button class="ghost-btn" id="applyCrop">Apply crop</button><button class="ghost-btn" id="resetCrop">Reset crop</button></div></div>
+          </div>
+          <div class="control-panel hidden" id="panel-effects">
+            <div class="control-title"><div><h3>Creative effects</h3><p>Apply a look, then fine-tune it in Adjust.</p></div></div>
+            <div class="effect-grid"><button class="effect-btn" data-effect="none"><span class="effect-swatch sw-none"></span>Original</button><button class="effect-btn" data-effect="mono"><span class="effect-swatch sw-mono"></span>Mono</button><button class="effect-btn" data-effect="sepia"><span class="effect-swatch sw-sepia"></span>Sepia</button><button class="effect-btn" data-effect="vintage"><span class="effect-swatch sw-vintage"></span>Vintage</button><button class="effect-btn" data-effect="cool"><span class="effect-swatch sw-cool"></span>Cool</button><button class="effect-btn" data-effect="warm"><span class="effect-swatch sw-warm"></span>Warm</button></div>
+            <div class="slider-grid one-row"><label class="slider-control"><span>Vignette <output id="vignetteVal">0%</output></span><input data-filter="vignette" type="range" min="0" max="100" value="0"></label></div>
+          </div>
+          <div class="control-panel hidden" id="panel-export">
+            <div class="control-title"><div><h3>Export settings</h3><p>Download the rendered canvas, not the untouched source file.</p></div></div>
+            <div class="export-row"><label>Format<select id="exportFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WEBP</option></select></label><label>Quality <output id="qualityVal">92%</output><input id="exportQuality" type="range" min="10" max="100" value="92"></label><label>Filename<input id="exportName" type="text" value="senn-edited-image"></label></div><button class="primary-btn" id="downloadEdited2" disabled>Download edited image ↓</button>
+          </div>
+        </div>
+        <aside class="editor-side">
+          <div class="side-card"><div class="side-card-head"><b>Current file</b><span class="tiny-dot"></span></div><div id="fileEmpty" class="empty-state"><span>▧</span><p>No image loaded yet.</p></div><div id="fileDetails" class="file-details hidden"><div class="file-thumb" id="fileThumb"></div><b id="loadedName">image.png</b><small id="loadedSize">0 KB</small><button class="danger-link" id="removeImage">Remove image</button></div></div>
+          <div class="side-card"><b>Quick actions</b><div class="quick-actions"><button id="quickCompress">▧ <span>Compress image</span> <i>↗</i></button><button id="quickResize">↔ <span>Resize image</span> <i>↗</i></button><button id="quickConvert">⇄ <span>Convert format</span> <i>↗</i></button></div></div>
+          <div class="side-note"><span>ⓘ</span><p>Image edits run in your browser. Large images may take longer depending on your device.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-converter">
+      <div class="page-heading"><div><div class="eyebrow">FILE WORKFLOW</div><h1>Converter</h1><p>Convert image formats and compress files without uploading them to a server.</p></div></div>
+      <div class="utility-layout"><div class="utility-card"><div class="feature-icon">⇄</div><h3>Image format converter</h3><p>Convert an image to PNG, JPEG, or WebP.</p><input type="file" id="convertInput" accept="image/*"><label>Output format<select id="convertFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WEBP</option></select></label><label>Quality <output id="convertQualityVal">90%</output><input type="range" id="convertQuality" min="10" max="100" value="90"></label><button class="primary-btn" id="convertBtn">Convert & download</button><p class="tool-message" id="convertMessage"></p></div>
+      <div class="utility-card"><div class="feature-icon">▧</div><h3>Image compressor</h3><p>Reduce file size by exporting to JPEG or WebP at a lower quality. PNG is lossless and may not shrink.</p><input type="file" id="compressInput" accept="image/*"><label>Output format<select id="compressFormat"><option value="image/webp">WEBP</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select></label><label>Quality <output id="compressQualityVal">70%</output><input type="range" id="compressQuality" min="10" max="100" value="70"></label><button class="primary-btn" id="compressBtn">Compress & download</button><p class="tool-message" id="compressMessage"></p></div></div>
+    </section>
+
+    <section class="view" id="view-utilities">
+      <div class="page-heading"><div><div class="eyebrow">SMALL TOOLS, REAL JOBS</div><h1>Utilities</h1><p>Quick tools for everyday digital work.</p></div></div>
+      <div class="utility-layout">
+        <div class="utility-card"><div class="feature-icon">▦</div><h3>QR Code Generator</h3><p>Create a QR code from a URL or short text.</p><input id="qrText" placeholder="https://example.com"><button class="primary-btn" id="makeQr">Generate QR</button><div class="qr-output" id="qrOutput"></div><small class="muted">Requires an internet connection to load the QR image service.</small></div>
+        <div class="utility-card"><div class="feature-icon">Aa</div><h3>Text Toolkit</h3><p>Count characters, words, and lines. Change letter case or copy text.</p><textarea id="textInput" rows="5" placeholder="Type or paste your text here..."></textarea><div class="text-stats"><span id="charCount">0 characters</span><span id="wordCount">0 words</span><span id="lineCount">0 lines</span></div><div class="button-row"><button class="ghost-btn" data-case="upper">UPPERCASE</button><button class="ghost-btn" data-case="lower">lowercase</button><button class="ghost-btn" data-case="title">Title Case</button><button class="ghost-btn" id="copyText">Copy</button></div></div>
+        <div class="utility-card"><div class="feature-icon">◉</div><h3>Color Picker</h3><p>Pick a color and copy its HEX or RGB value.</p><div class="color-picker-row"><input type="color" id="colorPicker" value="#6d5dfc"><div><b id="hexColor">#6D5DFC</b><small id="rgbColor">rgb(109, 93, 252)</small></div></div><button class="ghost-btn" id="copyHex">Copy HEX</button></div>
+        <div class="utility-card"><div class="feature-icon">⇄</div><h3>Unit Converter</h3><p>Convert common length and data units.</p><div class="unit-row"><input type="number" id="unitValue" value="1"><select id="unitFrom"><option value="km">Kilometer</option><option value="m">Meter</option><option value="cm">Centimeter</option><option value="mm">Millimeter</option><option value="mi">Mile</option><option value="ft">Foot</option><option value="in">Inch</option><option value="gb">GB</option><option value="mb">MB</option><option value="kb">KB</option></select></div><div class="unit-row"><span class="unit-equals">=</span><select id="unitTo"><option value="m">Meter</option><option value="km">Kilometer</option><option value="cm">Centimeter</option><option value="mm">Millimeter</option><option value="mi">Mile</option><option value="ft">Foot</option><option value="in">Inch</option><option value="gb">GB</option><option value="mb">MB</option><option value="kb">KB</option></select></div><div class="unit-result" id="unitResult">1,000 m</div></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-media">
+      <div class="page-heading"><div><div class="eyebrow">MEDIA LINK WORKSPACE</div><h1>Media Links</h1><p>Preview and organize public TikTok or YouTube links. Downloading is handled through official platform features for content you own or are authorized to use.</p></div></div>
+      <div class="media-layout"><div class="utility-card media-card"><div class="feature-icon">↗</div><h3>Link preview</h3><p>Paste a public TikTok or YouTube URL to identify the platform and open its official page.</p><div class="media-input-row"><input id="mediaUrl" type="url" placeholder="Paste TikTok or YouTube link..."><button class="primary-btn" id="checkMedia">Check link</button></div><div id="mediaResult" class="media-result hidden"><div class="media-platform" id="mediaPlatform">YOUTUBE</div><b id="mediaTitle">Link detected</b><p id="mediaDescription"></p><div class="button-row"><button class="primary-btn" id="openMedia">Open platform ↗</button><button class="ghost-btn" id="copyMedia">Copy link</button></div></div></div>
+      <div class="utility-card"><div class="feature-icon">ⓘ</div><h3>About downloading</h3><p>Senn Tools does not scrape streams, remove watermarks, or bypass platform restrictions. Use the platform's own download or export controls when available.</p><div class="official-links"><a href="https://support.google.com/youtube/answer/56100" target="_blank" rel="noopener">YouTube: download your own videos ↗</a><a href="https://support.tiktok.com/" target="_blank" rel="noopener">TikTok Help Center ↗</a></div></div></div>
+      <div class="notice"><b>Creator rights matter.</b> Only save or reuse media you created, have permission to use, or that the platform explicitly makes available for download.</div>
+    </section>
+
+    <footer><span>© 2026 SENN TOOLS</span><span>Built for practical work, not fake buttons.</span></footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
